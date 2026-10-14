@@ -1,0 +1,15 @@
+<% layout('layout', { title: 'Request ' + it.request.id.slice(0, 8) }) %>
+<h1>Request <code><%= it.request.id.slice(0, 8) %></code></h1>
+<dl data-request-id="<%= it.request.id %>">
+  <dt>Status</dt>
+  <dd><span class="status" data-role="status" data-status="<%= it.request.status %>"><%= it.request.status %></span></dd>
+  <dt>Packages</dt>
+  <dd data-role="packages"><%= it.request.packageCount ?? '—' %></dd>
+  <dt>Message</dt>
+  <dd data-role="message"><%= it.request.message ?? '' %></dd>
+  <dt>Submitted</dt>
+  <dd><%= it.fmt(it.request.createdAt) %></dd>
+  <dt>Updated</dt>
+  <dd data-role="updated"><%= it.fmt(it.request.updatedAt) %></dd>
+</dl>
+<p><a href="/requests">All requests</a> · <a href="/submit">Submit more</a></p>

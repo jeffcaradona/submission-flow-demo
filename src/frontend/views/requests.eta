@@ -1,0 +1,22 @@
+<% layout('layout', { title: 'My requests' }) %>
+<h1>My requests</h1>
+<% if (it.requests.length === 0) { %>
+  <p>Nothing submitted yet. <a href="/submit">Submit some packages</a>.</p>
+<% } else { %>
+  <table>
+    <thead>
+      <tr><th>Request</th><th>Status</th><th>Packages</th><th>Message</th><th>Updated</th></tr>
+    </thead>
+    <tbody>
+      <% for (const r of it.requests) { %>
+        <tr data-request-id="<%= r.id %>">
+          <td><a href="/requests/<%= r.id %>"><code><%= r.id.slice(0, 8) %></code></a></td>
+          <td><span class="status" data-role="status" data-status="<%= r.status %>"><%= r.status %></span></td>
+          <td data-role="packages"><%= r.packageCount ?? '—' %></td>
+          <td data-role="message"><%= r.message ?? '' %></td>
+          <td data-role="updated"><%= it.fmt(r.updatedAt) %></td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+<% } %>

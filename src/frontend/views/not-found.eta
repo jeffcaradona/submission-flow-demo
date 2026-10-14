@@ -1,0 +1,3 @@
+<% layout('layout', { title: 'Not found' }) %>
+<h1>Request not found</h1>
+<p><a href="/requests">Back to My requests</a></p>

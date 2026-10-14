@@ -1,0 +1,12 @@
+<% layout('layout', { title: 'Submit packages' }) %>
+<h1>Submit packages</h1>
+<% if (it.error) { %>
+  <p class="error" role="alert"><%= it.error %></p>
+<% } %>
+<form method="post" action="/submit">
+  <input type="hidden" name="idempotencyKey" value="<%= it.idempotencyKey %>">
+  <label for="packages">Tracking numbers (one per line or comma-separated)</label>
+  <textarea id="packages" name="packages" rows="8" required><%= it.packages %></textarea>
+  <button type="submit">Submit</button>
+</form>
+<p class="hint">Submitting returns immediately. Progress shows up on any page in the app without a refresh.</p>

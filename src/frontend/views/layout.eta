@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= it.title %> · Submission demo</title>
+  <style>
+    :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
+    body { margin: 0; line-height: 1.5; }
+    header { display: flex; gap: 1.5rem; align-items: baseline; padding: .75rem 1.5rem; border-bottom: 1px solid #8884; }
+    header a { text-decoration: none; }
+    main { max-width: 52rem; margin: 0 auto; padding: 1.5rem; }
+    textarea { width: 100%; box-sizing: border-box; font: inherit; font-family: ui-monospace, monospace; }
+    label { display: block; font-weight: 600; margin-bottom: .25rem; }
+    button { margin-top: .75rem; padding: .4rem 1rem; font: inherit; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: .4rem .5rem; border-bottom: 1px solid #8883; }
+    dl { display: grid; grid-template-columns: max-content 1fr; gap: .4rem 1.25rem; }
+    dt { font-weight: 600; }
+    dd { margin: 0; }
+    .error { color: #c0392b; font-weight: 600; }
+    .hint { opacity: .7; font-size: .9rem; }
+    .status { padding: .05rem .6rem; border: 1px solid currentColor; border-radius: 999px; font-size: .85rem; }
+    .status[data-status="Accepted"] { color: #7f8c8d; }
+    .status[data-status="Processing"] { color: #b9770e; }
+    .status[data-status="Completed"] { color: #1e8449; }
+    .status[data-status="Failed"] { color: #c0392b; }
+    #toasts { position: fixed; right: 1rem; bottom: 1rem; display: grid; gap: .5rem; max-width: 22rem; }
+    .toast { padding: .75rem 1rem; border-radius: .5rem; border: 1px solid #8886; background: Canvas; color: CanvasText; box-shadow: 0 4px 16px #0003; }
+    .toast a { font-weight: 600; }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Submission demo</strong>
+    <nav><a href="/submit">Submit</a> &nbsp; <a href="/requests">My requests</a></nav>
+  </header>
+  <main>
+    <%~ it.body %>
+  </main>
+  <div id="toasts" aria-live="polite"></div>
+  <script src="/public/live-status.js" defer></script>
+</body>
+</html>
